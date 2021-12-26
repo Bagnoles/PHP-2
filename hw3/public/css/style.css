@@ -1,0 +1,26 @@
+h1 {
+    text-align: center;
+    font-size: 40px;
+    font-family: sans-serif;
+}
+body {
+    background-color: rgba(151, 232, 208, 0.5);
+}
+.img-wrap {
+    margin: 0 auto;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+.gallery-img {
+    border: 2px solid black;
+}
+.back-btn {
+    display: block;
+    font-size: 25px;
+    font-weight: bold;
+    color: black;
+}
+.back-btn:hover {
+    color: darkred;
+}

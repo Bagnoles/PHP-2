@@ -1,0 +1,14 @@
+<html>
+<head>
+    <title>Галерея</title>
+    <link rel="stylesheet" href="../public/css/style.css">
+</head>
+<body>
+<h1>Галерея</h1>
+<div class="img-wrap">
+{% for item in images %}
+<a href="../public/index.php?image={{ item.id }}" target="_blank"><img src="{{ item.src }}" alt="{{item.name}}" width="400" class="gallery-img"></a>
+{% endfor %}
+</div>
+</body>
+</html>
