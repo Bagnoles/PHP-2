@@ -1,0 +1,15 @@
+<html>
+<head>
+    <title>Изображение</title>
+    <link rel="stylesheet" href="../public/css/style.css">
+</head>
+<body>
+{% for item in images %}
+{% if image_id == item.id %}
+<img src="{{ item.src }}" >
+{% endif %}
+{% endfor %}
+<hr>
+<a href="../public/index.php" class="back-btn">На главную</a>
+</body>
+</html>
