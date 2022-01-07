@@ -1,5 +1,4 @@
-<?php
-?>
+
 <form method="post">
     <textarea name="text"><?=$text?></textarea>
     <br/>

@@ -1,11 +1,8 @@
 <?php
 
-function __autoload($classname){
-    include_once("controller/$classname.php");
-}
-
-
-//site.ru/index.php?act=auth&c=User
+spl_autoload_register(function($name){
+    include_once("controller/$name.php");
+});
 
 $action = 'action_';
 $action .=(isset($_GET['act'])) ? $_GET['act'] : 'index';

@@ -1,5 +1,4 @@
-<?php
-?>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -17,7 +16,8 @@
 
     <div id="menu">
         <a href="index.php">Читать текст</a> |
-        <a href="index.php?c=page&act=edit">Редактировать текст</a>
+        <a href="index.php?c=page&act=edit">Редактировать текст</a> |
+        <a href="index.php?act=auth&c=User">Личный кабинет</a>
     </div>
 
     <div id="content">
