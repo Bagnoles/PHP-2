@@ -17,7 +17,16 @@
     <div id="menu">
         <a href="index.php">Читать текст</a> |
         <a href="index.php?c=page&act=edit">Редактировать текст</a> |
-        <a href="index.php?act=auth&c=User">Личный кабинет</a>
+        <?php
+        if ($user) {
+        ?>
+            <a href="index.php?act=lk&c=User">Личный кабинет</a> |
+            <a href="index.php?act=quit&c=User">Выйти</a>
+        <?php } else { ?>
+            <a href="index.php?act=auth&c=User">Войти</a> |
+            <a href="index.php?act=reg&c=User">Регистрация</a>
+        <?php }
+        ?>
     </div>
 
     <div id="content">
