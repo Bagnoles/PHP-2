@@ -32,7 +32,20 @@ class DB
             die($info[2]);
         }
 
-        return $q;
+        return $q->fetch();
+    }
+
+    public function SelectAll($query)
+    {
+        $q = $this->db->prepare($query);
+        $q->execute();
+
+        if($q->errorCode() != PDO::ERR_NONE){
+            $info = $q->errorInfo();
+            die($info[2]);
+        }
+
+        return $q->fetchAll();
     }
 
     public function Insert($table , $object)

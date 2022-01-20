@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1
--- Время создания: Янв 17 2022 г., 21:15
+-- Время создания: Янв 20 2022 г., 19:37
 -- Версия сервера: 10.3.16-MariaDB
 -- Версия PHP: 7.3.6
 
@@ -68,6 +68,28 @@ INSERT INTO `products` (`id`, `name`, `img_path`, `price`, `description`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Структура таблицы `products_in_basket`
+--
+
+CREATE TABLE `products_in_basket` (
+  `session_id` bigint(20) NOT NULL,
+  `product_id` bigint(20) NOT NULL,
+  `quantity` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `products_in_basket`
+--
+
+INSERT INTO `products_in_basket` (`session_id`, `product_id`, `quantity`) VALUES
+(1642623426, 1, 1),
+(1642623426, 2, 1),
+(1642623426, 1, 1),
+(1642701768, 1, 1);
+
+-- --------------------------------------------------------
+
+--
 -- Структура таблицы `products_in_order`
 --
 
@@ -99,7 +121,9 @@ INSERT INTO `users` (`id`, `login`, `password`, `name`) VALUES
 (2, 'Qwer', '43ea4dfe130b22d7160ccee58158f7b77b7f85185eecc0617d22b031efd4ae34', 'Qwer'),
 (3, 'Asdf', '07a3424918fc27866ee49a4d07adf52aa25fda70d4a94ee66872cf8194243a70', 'Asdf'),
 (4, 'Ahga', 'e45ff24c28df5887f6a894c61a5e5ec44ce5e5a16c498a6f7885fd82c42ff54e', 'Ahga'),
-(5, 'zxcv', 'be0836b39a3d0a59404c93245c6cc2dffd2cc6c54239c40495a0d3a93b6380eb', 'zxcv');
+(5, 'zxcv', 'be0836b39a3d0a59404c93245c6cc2dffd2cc6c54239c40495a0d3a93b6380eb', 'zxcv'),
+(6, 'ghjghj', '69d030cc98b668ce5c413285f2865a3003a5682f582314c5ec866b89cc030d96', 'ghjghj'),
+(7, 'Andrey', '171e4dfe889f22dbbbf0e144d5b0c6dbd8578edf8458ce06fbc5bb76a58c5ca4', 'Andrey');
 
 --
 -- Индексы сохранённых таблиц
@@ -144,7 +168,7 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

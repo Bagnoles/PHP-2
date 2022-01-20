@@ -15,9 +15,9 @@
     </div>
 
     <div id="menu">
-        <a href="index.php">Читать текст</a> |
-        <a href="index.php?c=page&act=edit">Редактировать текст</a> |
+        <a href="index.php">Главная страница</a> |
         <a href="index.php?c=catalog&act=viewAll">Каталог товаров</a> |
+        <a href="index.php?c=basket&act=basket">Корзина</a> |
         <?php
         if ($user) {
         ?>

@@ -7,7 +7,6 @@ class M_User
     {
         $query = "SELECT * FROM users WHERE login='" . $login . "'";
         $result = DB::Instance() -> Select($query);
-        $result = $result->fetch();
         if ($result) {
             if ($result['password'] == $this -> setPass($login, $pass)) {
                 $_SESSION['user_id'] = $result['id'];
@@ -23,7 +22,7 @@ class M_User
     {
         $query = "SELECT * FROM users WHERE login = '" . $login . "'";
         $result = DB::Instance() -> Select($query);
-        if (!$result->fetch()) {
+        if (!$result) {
             $password = $this -> setPass($login, $pass);
             $object = [
                 'login' => $login,
@@ -53,7 +52,7 @@ class M_User
     {
         $query = "SELECT * FROM users WHERE id=" . $id;
         $result = DB::Instance() -> Select($query);
-        return $result->fetch();
+        return $result;
     }
     function setPass($name, $password) {
         return strrev(md5($name)) . md5($password);
