@@ -6,11 +6,10 @@ class C_Basket extends C_Base
     public function action_basket()
     {
         $this->title .= ':: Корзина ';
+        $text = 'В корзине пусто.';
         if (isset($_SESSION['basket_id'])) {
             $basket = new M_Basket();
             $text = $basket->renderBasket($_SESSION['basket_id']);
-        } else {
-            $text = 'В корзине пусто.';
         }
         $this->content = $this->Template('view/v_basket.php', array('text' => $text));
     }

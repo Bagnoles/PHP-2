@@ -13,6 +13,9 @@ switch (@$_GET['c'])
     case 'catalog':
         $controller = new C_Catalog();
         break;
+    case 'order':
+        $controller = new C_Order();
+        break;
     case 'basket':
         $controller = new C_Basket();
         break;

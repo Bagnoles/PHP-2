@@ -18,13 +18,23 @@ class M_Basket
         if (!isset($_SESSION['basket_id'])) {
             $_SESSION['basket_id'] = time(); // пока думаю как сделать случайное и неповторяющееся с другими незарегистрированными пользователями число
         }
-        //потом: если продукт есть в корзине - добавить увеличение количества, а не новую строчку
-        $object = [
-            'session_id' => $_SESSION['basket_id'],
-            'product_id' => $id,
-            'quantity' => 1
-        ];
-        DB::Instance() -> Insert('products_in_basket', $object);
+        $query = "SELECT * FROM products_in_basket WHERE product_id = " . $id . " AND session_id = " . $_SESSION['basket_id'];
+        $res = DB::Instance()->Select($query);
+        if (empty($res)) {
+            $object = [
+                'session_id' => $_SESSION['basket_id'],
+                'product_id' => $id,
+                'quantity' => 1
+            ];
+            DB::Instance() -> Insert('products_in_basket', $object);
+        } else {
+            $object = [
+                'session_id' => $_SESSION['basket_id'],
+                'product_id' => $id,
+                'quantity' => $res['quantity'] + 1
+            ];
+            DB::Instance()->Update('products_in_basket', $object, '`session_id` = ' . $_SESSION['basket_id'] . ' AND `product_id` = ' . $id);
+        }
     }
 
     function deleteFromBasket($id)
