@@ -1,5 +1,5 @@
 <?php
-include_once 'PDO.php';
+
 
 class M_Order
 {
@@ -27,8 +27,23 @@ class M_Order
     }
 
     public function getOrders($user_id) {
-        $query = "SELECT orders.id AS number, order_status.name AS status, products.name AS name, products_in_order.amount AS quantity FROM orders JOIN products_in_order ON orders.id = products_in_order.order_id JOIN products ON products_in_order.product_id = products.id JOIN order_status ON orders.status = order_status.id WHERE orders.user_id = " . $user_id;
+        $query = "SELECT orders.id AS number, order_status.name AS status, products.name AS name, products_in_order.amount AS quantity FROM orders JOIN products_in_order ON orders.id = products_in_order.order_id JOIN products ON products_in_order.product_id = products.id JOIN order_status ON orders.status = order_status.id WHERE orders.user_id = " . $user_id . " GROUP BY orders.id";
         $orders = DB::Instance() -> SelectAll($query);
         return $orders;
+    }
+
+    public function getAllOrders() {
+        $query = "SELECT orders.id AS number, order_status.name AS status, products.name AS name, products_in_order.amount AS quantity, users.login AS user_name, users.phone AS user_phone FROM orders JOIN products_in_order ON orders.id = products_in_order.order_id JOIN products ON products_in_order.product_id = products.id JOIN order_status ON orders.status = order_status.id JOIN users ON orders.user_id = users.id GROUP BY orders.id";
+        $orders = DB::Instance() -> SelectAll($query);
+        return $orders;
+    }
+
+    public function deleteOrder($orderId) {
+        $res = DB::Instance() -> Delete('orders', 'orders.id = ' . $orderId);
+        if (is_numeric($res)) {
+            return "Заказ удален.";
+        } else {
+            return "Ошибка при удалении заказа.";
+        }
     }
 }

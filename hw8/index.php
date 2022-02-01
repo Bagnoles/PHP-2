@@ -1,8 +1,5 @@
 <?php
-
-spl_autoload_register(function($name){
-    include_once("controller/$name.php");
-});
+include_once 'autoload.php';
 
 session_start();
 $action = 'action_';

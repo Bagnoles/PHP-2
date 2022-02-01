@@ -1,5 +1,5 @@
 <?php
-include_once 'model/M_Catalog.php';
+
 
 class C_Catalog extends C_Base
 {
@@ -16,5 +16,16 @@ class C_Catalog extends C_Base
         $catalog = new M_Catalog();
         $product = $catalog->getProduct($_GET['id']);
         $this->content = $this->Template('view/v_product.php', array('text' => $product));
+    }
+    public function action_add()
+    {
+        $this->title .= ':: Добавление товара ';
+        $text = 'Введите данные о товаре';
+        if ($this->isPost()) {
+            $catalog = new M_Catalog();
+            $text = $catalog->addProduct($_POST['title'], $_POST['price'], $_POST['description']);
+            $this->content = $this->Template('view/v_index.php', array('text' => $text));
+        }
+        $this->content = $this->Template('view/v_addProduct.php', array('text' => $text));
     }
 }

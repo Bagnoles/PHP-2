@@ -1,5 +1,5 @@
 <?php
-include_once 'model/M_user.php';
+
 
 abstract class C_Base extends C_Controller
 {
@@ -9,7 +9,7 @@ abstract class C_Base extends C_Controller
 
     protected function before()
     {
-        $this->title = 'Название сайта';
+        $this->title = 'Интернет-магазин';
         $this->content = '';
 
     }

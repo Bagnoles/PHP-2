@@ -1,5 +1,5 @@
 <?php
-include_once('model/M_User.php');
+
 
 class C_User extends C_Base
 {
@@ -18,10 +18,10 @@ class C_User extends C_Base
     public function action_reg()
     {
         $this->title .= '::Регистрация';
-        $text = "Введите логин и пароль для регистрации";
+        $text = "Введите данные для регистрации";
         if ($this->isPost()) {
             $user = new M_User();
-            $text = $user->reg($_POST['name'], $_POST['login'], $_POST['pass']);
+            $text = $user->reg($_POST['name'], $_POST['login'], $_POST['pass'], $_POST['mail'], $_POST['phone']);
         }
         $this->content = $this->Template('view/v_reg.php', array('text' => $text));
     }

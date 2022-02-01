@@ -1,5 +1,5 @@
 <?php
-include_once 'model/M_Order.php';
+
 
 class C_Order extends C_Base
 {
@@ -15,5 +15,19 @@ class C_Order extends C_Base
         $order = new M_Order();
         $text = $order->getOrders($_SESSION['user_id']);
         $this->content = $this->Template('view/v_orders.php', array('text' => $text));
+    }
+
+    public function action_getAll()
+    {
+        $order = new M_Order();
+        $text = $order->getAllOrders();
+        $this->content = $this->Template('view/v_orders.php', array('text' => $text));
+    }
+
+    public function action_delete()
+    {
+        $order = new M_Order();
+        $text = $order->deleteOrder($_GET['id']);
+        $this->content = $this->Template('view/v_index.php', array('text' => $text));
     }
 }

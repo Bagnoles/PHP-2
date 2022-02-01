@@ -1,5 +1,5 @@
 <?php
-include_once 'PDO.php';
+
 
 class M_User
 {
@@ -18,7 +18,7 @@ class M_User
             return 'Пользователь с таким логином не зарегистрирован!';
         }
     }
-    function reg($name, $login, $pass)
+    function reg($name, $login, $pass, $mail, $phone)
     {
         $query = "SELECT * FROM users WHERE login = '" . $login . "'";
         $result = DB::Instance() -> Select($query);
@@ -27,7 +27,10 @@ class M_User
             $object = [
                 'login' => $login,
                 'password' => $password,
-                'name' => $name
+                'name' => $name,
+                'mail' => $mail,
+                'phone' => $phone,
+                'role' => 0
             ];
             $res = DB::Instance() -> Insert('users', $object);
             if (is_numeric($res)) {

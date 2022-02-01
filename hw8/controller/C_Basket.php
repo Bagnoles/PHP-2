@@ -1,5 +1,5 @@
 <?php
-include_once 'model/M_Basket.php';
+
 
 class C_Basket extends C_Base
 {
@@ -18,7 +18,8 @@ class C_Basket extends C_Base
     {
         $basket = new M_Basket();
         $basket->addToBasket($_GET['id']);
-        // подумать над переходом после кнопки купить
+        $text = "Товар добавлен в корзину.";
+        $this->content = $this->Template('view/v_index.php', array('text' => $text));
     }
 
     public function action_delete()

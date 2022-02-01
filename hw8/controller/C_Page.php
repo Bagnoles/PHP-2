@@ -1,12 +1,12 @@
 <?php
-include_once('model/model.php');
+
 
 class C_Page extends C_Base
 {
     public function action_index()
     {
         $this->title .= '::Главная страница';
-        $text = text_get();
+        $text = "Главная страница интернет-магазина.";
         $this->content = $this->Template('view/v_index.php', array('text' => $text));
     }
 
